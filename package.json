@@ -8,9 +8,6 @@
   "keywords": [
     "png","encoding","decoding"
   ],
-  "engines": {
-    "node": "0.8.x"
-  },
   "main": "./lib/png-coder.js",
   "directories": {
     "example": "examples"
