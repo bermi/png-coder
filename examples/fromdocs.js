@@ -1,6 +1,6 @@
 
-var fs = require('fs'),
-    PNG = require('png-coder').PNG;
+const fs = require('fs');
+const PNG = require('../').PNG;
 
 fs.createReadStream('in.png')
     .pipe(new PNG({
@@ -8,9 +8,9 @@ fs.createReadStream('in.png')
     }))
     .on('parsed', function() {
 
-        for (var y = 0; y < this.height; y++) {
-            for (var x = 0; x < this.width; x++) {
-                var idx = (this.width * y + x) << 2;
+        for (let y = 0; y < this.height; y++) {
+            for (let x = 0; x < this.width; x++) {
+                const idx = (this.width * y + x) << 2;
 
                 // invert color
                 this.data[idx] = 255 - this.data[idx];

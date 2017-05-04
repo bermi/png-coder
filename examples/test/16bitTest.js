@@ -2,19 +2,20 @@
  * Created by mehsisil on 4/24/15.
  */
 
-var fs = require('fs');
-var PNG = require('../../lib/png-coder').PNG;
+const fs = require('fs');
+const PNG = require('../../').PNG;
 
-var png = new PNG({
-        filterType: -1
-    }),
-    src = fs.createReadStream(process.argv[2] || './examples/test/gradient_16bit.png'),
-    dst = fs.createWriteStream(process.argv[3] || '/examples/test/out/gradient_16bit.png');
+const png = new PNG({
+  filterType: -1
+});
+
+const src = fs.createReadStream(process.argv[2] || './examples/test/gradient_16bit.png');
+const dst = fs.createWriteStream(process.argv[3] || '/examples/test/out/gradient_16bit.png');
 
 
-png.on('parsed', function() {
+png.on('parsed', () => {
 
-    png.pack().pipe(dst);
+  png.pack().pipe(dst);
 });
 
 src.pipe(png);
